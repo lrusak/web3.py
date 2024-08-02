@@ -302,3 +302,15 @@ async def test_async_cl_validator_get_attester_duties(async_beacon):
 
     response = await async_beacon.get_attester_duties(epoch, [random_validator_index])
     _assert_valid_response(response)
+
+
+@pytest.mark.asyncio
+async def test_async_cl_validator_get_block_proposer_duties(async_beacon):
+    finality_checkpoint_response = await async_beacon.get_finality_checkpoint()
+    _assert_valid_response(finality_checkpoint_response)
+
+    finality_checkpoint = finality_checkpoint_response["data"]
+    epoch = finality_checkpoint["finalized"]["epoch"]
+
+    response = await async_beacon.get_block_proposer_duties(epoch)
+    _assert_valid_response(response)

@@ -66,3 +66,4 @@ GET_SYNCING = "/eth/v1/node/syncing"
 # [ VALIDATOR endpoints ]
 
 GET_ATTESTER_DUTIES = "/eth/v1/validator/duties/attester/{0}"
+GET_BLOCK_PROPOSERS_DUTIES = "/eth/v1/validator/duties/proposer/{0}"
