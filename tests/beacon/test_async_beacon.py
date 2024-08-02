@@ -252,6 +252,12 @@ async def test_async_cl_node_get_peer(async_beacon):
 
 
 @pytest.mark.asyncio
+async def test_async_cl_node_get_peer_count(async_beacon):
+    response = await async_beacon.get_peer_count()
+    _assert_valid_response(response)
+
+
+@pytest.mark.asyncio
 async def test_async_cl_node_get_health(async_beacon):
     response = await async_beacon.get_health()
     assert isinstance(response, int)

@@ -45,6 +45,7 @@ from web3.beacon.api_endpoints import (
     GET_LIGHT_CLIENT_UPDATES,
     GET_NODE_IDENTITY,
     GET_PEER,
+    GET_PEER_COUNT,
     GET_PEERS,
     GET_PROPOSER_SLASHINGS,
     GET_REWARDS,
@@ -224,6 +225,9 @@ class AsyncBeacon:
 
     async def get_peer(self, peer_id: str) -> Dict[str, Any]:
         return await self._async_make_get_request(GET_PEER.format(peer_id))
+
+    async def get_peer_count(self) -> Dict[str, Any]:
+        return await self._async_make_get_request(GET_PEER_COUNT)
 
     async def get_health(self) -> int:
         url = URI(self.base_url + GET_HEALTH)
