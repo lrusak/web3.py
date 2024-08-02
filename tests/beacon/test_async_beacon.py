@@ -280,3 +280,25 @@ async def test_async_cl_node_get_blob_sidecars(async_beacon):
     # test with indices
     with_indices = await async_beacon.get_blob_sidecars("head", [0, 1])
     _assert_valid_response(with_indices)
+
+
+# Validator endpoint tests:
+
+
+@pytest.mark.asyncio
+async def test_async_cl_validator_get_attester_duties(async_beacon):
+    finality_checkpoint_response = await async_beacon.get_finality_checkpoint()
+    _assert_valid_response(finality_checkpoint_response)
+
+    finality_checkpoint = finality_checkpoint_response["data"]
+    epoch = finality_checkpoint["finalized"]["epoch"]
+
+    validators_response = await async_beacon.get_validators()
+    _assert_valid_response(validators_response)
+
+    validators = validators_response["data"]
+    random_validator = validators[randint(0, len(validators))]
+    random_validator_index = random_validator["index"]
+
+    response = await async_beacon.get_attester_duties(epoch, [random_validator_index])
+    _assert_valid_response(response)

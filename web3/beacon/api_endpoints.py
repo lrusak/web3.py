@@ -62,3 +62,7 @@ GET_PEER = "/eth/v1/node/peers/{0}"
 GET_HEALTH = "/eth/v1/node/health"
 GET_VERSION = "/eth/v1/node/version"
 GET_SYNCING = "/eth/v1/node/syncing"
+
+# [ VALIDATOR endpoints ]
+
+GET_ATTESTER_DUTIES = "/eth/v1/validator/duties/attester/{0}"
