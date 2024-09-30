@@ -16,6 +16,7 @@ from web3._utils.http_session_manager import (
 )
 from web3.beacon.api_endpoints import (
     GET_ATTESTATIONS,
+    GET_ATTESTATIONS_REWARDS,
     GET_ATTESTER_DUTIES,
     GET_ATTESTER_SLASHINGS,
     GET_BEACON_HEADS,
@@ -272,4 +273,13 @@ class AsyncBeacon:
     ) -> Dict[str, Any]:
         return await self._async_make_post_request(
             GET_SYNC_COMMITTEE_DUTIES.format(epoch), validator_indices
+        )
+
+    # [ REWARDS endpoints ]
+
+    async def get_attestations_rewards(
+        self, epoch: str, validator_indices: List[str]
+    ) -> Dict[str, Any]:
+        return await self._async_make_post_request(
+            GET_ATTESTATIONS_REWARDS.format(epoch), validator_indices
         )

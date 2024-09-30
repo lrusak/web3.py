@@ -69,3 +69,6 @@ GET_SYNCING = "/eth/v1/node/syncing"
 GET_ATTESTER_DUTIES = "/eth/v1/validator/duties/attester/{0}"
 GET_BLOCK_PROPOSERS_DUTIES = "/eth/v1/validator/duties/proposer/{0}"
 GET_SYNC_COMMITTEE_DUTIES = "/eth/v1/validator/duties/sync/{0}"
+
+# [ REWARDS endpoints ]
+GET_ATTESTATIONS_REWARDS = "/eth/v1/beacon/rewards/attestations/{0}"
