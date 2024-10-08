@@ -210,6 +210,11 @@ def test_cl_node_get_peer(beacon):
     _assert_valid_response(response)
 
 
+def test_cl_node_get_peer_count(beacon):
+    response = beacon.get_peer_count()
+    _assert_valid_response(response)
+
+
 def test_cl_node_get_health(beacon):
     response = beacon.get_health()
     assert isinstance(response, int)
