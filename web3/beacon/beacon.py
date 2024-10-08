@@ -26,6 +26,7 @@ from web3.beacon.api_endpoints import (
     GET_BLOCK_ATTESTATIONS,
     GET_BLOCK_HEADER,
     GET_BLOCK_HEADERS,
+    GET_BLOCK_PROPOSERS_DUTIES,
     GET_BLOCK_ROOT,
     GET_BLS_TO_EXECUTION_CHANGES,
     GET_DEPOSIT_CONTRACT,
@@ -241,3 +242,6 @@ class Beacon:
         return self._make_post_request(
             GET_ATTESTER_DUTIES.format(epoch), validator_indices
         )
+
+    def get_block_proposer_duties(self, epoch: str) -> Dict[str, Any]:
+        return self._make_get_request(GET_BLOCK_PROPOSERS_DUTIES.format(epoch))
