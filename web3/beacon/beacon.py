@@ -3,6 +3,7 @@ from typing import (
     Dict,
     List,
     Optional,
+    Union,
 )
 
 from eth_typing import (
@@ -71,6 +72,14 @@ class Beacon:
         uri = URI(self.base_url + endpoint_url)
         return self._request_session_manager.json_make_get_request(
             uri, params=params, timeout=self.request_timeout
+        )
+
+    def _make_post_request(
+        self, endpoint_url: str, body: Union[List[str], Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        uri = URI(self.base_url + endpoint_url)
+        return self._request_session_manager.json_make_post_request(
+            uri, json=body, timeout=self.request_timeout
         )
 
     # [ BEACON endpoints ]

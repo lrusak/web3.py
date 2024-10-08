@@ -116,6 +116,13 @@ class HTTPSessionManager:
         response.raise_for_status()
         return response.json()
 
+    def json_make_post_request(
+        self, endpoint_uri: URI, *args: Any, **kwargs: Any
+    ) -> Dict[str, Any]:
+        response = self.get_response_from_post_request(endpoint_uri, *args, **kwargs)
+        response.raise_for_status()
+        return response.json()
+
     def get_response_from_post_request(
         self, endpoint_uri: URI, *args: Any, **kwargs: Any
     ) -> requests.Response:
