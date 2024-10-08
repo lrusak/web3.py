@@ -49,6 +49,7 @@ from web3.beacon.api_endpoints import (
     GET_PROPOSER_SLASHINGS,
     GET_REWARDS,
     GET_SPEC,
+    GET_SYNC_COMMITTEE_DUTIES,
     GET_SYNCING,
     GET_VALIDATOR,
     GET_VALIDATOR_BALANCES,
@@ -245,3 +246,10 @@ class Beacon:
 
     def get_block_proposer_duties(self, epoch: str) -> Dict[str, Any]:
         return self._make_get_request(GET_BLOCK_PROPOSERS_DUTIES.format(epoch))
+
+    def get_sync_committee_duties(
+        self, epoch: str, validator_indices: List[str]
+    ) -> Dict[str, Any]:
+        return self._make_post_request(
+            GET_SYNC_COMMITTEE_DUTIES.format(epoch), validator_indices
+        )
