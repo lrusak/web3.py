@@ -290,3 +290,24 @@ def test_cl_validator_get_sync_committee_duties(beacon):
 
     response = beacon.get_sync_committee_duties(epoch, [random_validator_index])
     _assert_valid_response(response)
+
+
+# Rewards endpoint tests:
+
+
+def test_cl_validator_get_attestations_rewards(beacon):
+    finality_checkpoint_response = beacon.get_finality_checkpoint()
+    _assert_valid_response(finality_checkpoint_response)
+
+    finality_checkpoint = finality_checkpoint_response["data"]
+    epoch = finality_checkpoint["finalized"]["epoch"]
+
+    validators_response = beacon.get_validators()
+    _assert_valid_response(validators_response)
+
+    validators = validators_response["data"]
+    random_validator = validators[randint(0, len(validators))]
+    random_validator_index = random_validator["index"]
+
+    response = beacon.get_attestations_rewards(epoch, [random_validator_index])
+    _assert_valid_response(response)
