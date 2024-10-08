@@ -16,6 +16,7 @@ from web3._utils.http_session_manager import (
 )
 from web3.beacon.api_endpoints import (
     GET_ATTESTATIONS,
+    GET_ATTESTER_DUTIES,
     GET_ATTESTER_SLASHINGS,
     GET_BEACON_HEADS,
     GET_BEACON_STATE,
@@ -230,4 +231,13 @@ class Beacon:
         return self._make_get_request(
             GET_BLOB_SIDECARS.format(block_id),
             params=indices_param,
+        )
+
+    # [ VALIDATOR endpoints ]
+
+    def get_attester_duties(
+        self, epoch: str, validator_indices: List[str]
+    ) -> Dict[str, Any]:
+        return self._make_post_request(
+            GET_ATTESTER_DUTIES.format(epoch), validator_indices
         )
